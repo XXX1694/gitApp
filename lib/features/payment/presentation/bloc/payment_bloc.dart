@@ -6,8 +6,6 @@ part 'payment_state.dart';
 
 class PaymentBloc extends Bloc<PaymentEvent, PaymentState> {
   PaymentBloc() : super(PaymentInitial()) {
-    on<PaymentEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+    on<PaymentEvent>((event, emit) {});
   }
 }

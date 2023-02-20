@@ -7,8 +7,6 @@ part 'fitness_center_choose_state.dart';
 class FitnessCenterChooseBloc
     extends Bloc<FitnessCenterChooseEvent, FitnessCenterChooseState> {
   FitnessCenterChooseBloc() : super(FitnessCenterChooseInitial()) {
-    on<FitnessCenterChooseEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+    on<FitnessCenterChooseEvent>((event, emit) {});
   }
 }

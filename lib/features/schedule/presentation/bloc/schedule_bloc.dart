@@ -6,8 +6,6 @@ part 'schedule_state.dart';
 
 class ScheduleBloc extends Bloc<ScheduleEvent, ScheduleState> {
   ScheduleBloc() : super(ScheduleInitial()) {
-    on<ScheduleEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+    on<ScheduleEvent>((event, emit) {});
   }
 }

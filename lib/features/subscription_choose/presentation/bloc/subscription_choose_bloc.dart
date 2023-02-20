@@ -7,8 +7,6 @@ part 'subscription_choose_state.dart';
 class SubscriptionChooseBloc
     extends Bloc<SubscriptionChooseEvent, SubscriptionChooseState> {
   SubscriptionChooseBloc() : super(SubscriptionChooseInitial()) {
-    on<SubscriptionChooseEvent>((event, emit) {
-      // TODO: implement event handler
-    });
+    on<SubscriptionChooseEvent>((event, emit) {});
   }
 }
