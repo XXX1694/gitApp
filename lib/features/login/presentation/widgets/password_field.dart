@@ -1,5 +1,6 @@
 import 'package:fit_app/common/theme/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class PasswordField extends StatefulWidget {
   const PasswordField({super.key, required this.controller});
@@ -41,7 +42,7 @@ class _PasswordFieldState extends State<PasswordField> {
               color: defaultTextColor60,
             ),
           ),
-          // hintText: AppLocalizations.of(context)!.password,
+          hintText: AppLocalizations.of(context)!.password,
           hintStyle: Theme.of(context).textTheme.bodyText2,
           fillColor: Colors.white,
           focusedBorder: OutlineInputBorder(

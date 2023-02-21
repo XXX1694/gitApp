@@ -1,5 +1,6 @@
 {
-    "app_name": "FitApp",
+    "app_name_1": "Fit",
+    "app_name_2": "App",
 
     "log_in_to_continue": "Log in to continue",
     "login": "Login",

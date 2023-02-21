@@ -1,11 +1,12 @@
 {
-    "app_name": "FitApp",
+    "app_name_1": "Fit",
+    "app_name_2": "App",
 
     "log_in_to_continue": "Войдите что бы продолжить",
     "login": "Логин",
-    "password": "Password",
-    "forgot_password": "Forgot password?",
-    "enter": "Enter",
-    "have_an_account": "Don't have an account yet?",
-    "sign_up": "Sign Up"
+    "password": "Пароль",
+    "forgot_password": "Забыли пароль?",
+    "enter": "Зайти",
+    "have_an_account": "Еще нету аккаутна?",
+    "sign_up": "Регестрация"
 }

@@ -1,15 +1,68 @@
+import 'package:fit_app/common/constants.dart';
+import 'package:fit_app/common/theme/colors.dart';
+import 'package:fit_app/common/widgets/main_button.dart';
+import 'package:fit_app/features/login/presentation/widgets/forgot_password.dart';
+import 'package:fit_app/features/login/presentation/widgets/login_field.dart';
+import 'package:fit_app/features/login/presentation/widgets/password_field.dart';
+import 'package:fit_app/features/login/presentation/widgets/sign_up_transition.dart';
+import 'package:fit_app/features/login/presentation/widgets/text_block.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+late TextEditingController _loginController;
+late TextEditingController _passwordController;
+
+class _LoginPageState extends State<LoginPage> {
+  @override
+  void initState() {
+    _loginController = TextEditingController();
+    _passwordController = TextEditingController();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text(AppLocalizations.of(context)!.test),
+      backgroundColor: backgroundColor,
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: padding_horiontal),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            const Spacer(flex: 2),
+            const TextBlock(),
+            const Spacer(flex: 2),
+            LoginField(controller: _loginController),
+            const SizedBox(height: 16),
+            PasswordField(controller: _passwordController),
+            const SizedBox(height: 12),
+            const ForgotPassword(),
+            const Spacer(flex: 3),
+            MainButton(
+              txt: AppLocalizations.of(context)!.enter,
+              onPressed: () {},
+            ),
+            const SizedBox(height: 40),
+            const SignUpTransition(),
+            const SizedBox(height: 12),
+          ],
+        ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    _loginController.dispose();
+    _passwordController.dispose();
+    super.dispose();
   }
 }

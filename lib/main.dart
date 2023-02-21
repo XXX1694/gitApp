@@ -1,3 +1,4 @@
+import 'package:fit_app/common/theme/light_theme.dart';
 import 'package:fit_app/features/login/presentation/bloc/login_bloc.dart';
 import 'package:fit_app/features/login/presentation/pages/login_page.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,7 @@ class MyApp extends StatelessWidget {
         )
       ],
       child: MaterialApp(
+        theme: lightTheme(),
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
         title: 'Fitness App',

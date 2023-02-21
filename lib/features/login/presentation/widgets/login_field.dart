@@ -1,5 +1,6 @@
 import 'package:fit_app/common/theme/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LoginField extends StatelessWidget {
   const LoginField({super.key, required this.controller});
@@ -27,7 +28,7 @@ class LoginField extends StatelessWidget {
               color: defaultTextColor100,
             ),
         decoration: InputDecoration(
-          // hintText: AppLocalizations.of(context)!.login,
+          hintText: AppLocalizations.of(context)!.login,
           hintStyle: Theme.of(context).textTheme.bodyText2,
           fillColor: Colors.white,
           focusedBorder: OutlineInputBorder(
@@ -53,6 +54,5 @@ class LoginField extends StatelessWidget {
         keyboardType: TextInputType.emailAddress,
       ),
     );
-    ;
   }
 }
