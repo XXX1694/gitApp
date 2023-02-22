@@ -1,5 +1,6 @@
 import 'package:fit_app/common/theme/light_theme.dart';
-import 'package:fit_app/features/login/presentation/bloc/login_bloc.dart';
+import 'package:fit_app/features/login/data/repositories/user_auth_repository.dart';
+import 'package:fit_app/features/login/presentation/bloc/auth_bloc.dart';
 import 'package:fit_app/features/login/presentation/pages/login_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -24,7 +25,10 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => LoginBloc(),
+          create: (context) => LoginBloc(
+            repo: UserAuthRepository(),
+            userState: const AuthState(),
+          ),
         )
       ],
       child: MaterialApp(

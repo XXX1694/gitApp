@@ -3,13 +3,17 @@ import 'package:fit_app/features/login/data/repositories/user_auth_repository.da
 import 'package:fit_app/services/network_info_service.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-part 'login_event.dart';
-part 'login_state.dart';
+part 'auth_event.dart';
+part 'auth_state.dart';
 
-class LoginBloc extends Bloc<LoginEvent, LoginState> {
+class LoginBloc extends Bloc<AuthEvent, AuthState> {
   final networkInfo = NetworkInfo();
-  final repo = UserAuthRepository();
-  LoginBloc() : super(UserOffline()) {
+  UserAuthRepository repo;
+
+  LoginBloc({
+    required this.repo,
+    required AuthState userState,
+  }) : super(UserOffline()) {
     on<LogIn>(
       (event, emit) async {
         final isConnected = await networkInfo.isConnected();
