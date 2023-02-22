@@ -8,6 +8,7 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 // For building models: flutter pub run build_runner build --delete-conflicting-outputs
+// For changing app icon: flutter pub run flutter_launcher_icons:main
 
 void main() async {
   await dotenv.load(fileName: '.env');
