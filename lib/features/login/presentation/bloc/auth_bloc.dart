@@ -6,11 +6,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 part 'auth_event.dart';
 part 'auth_state.dart';
 
-class LoginBloc extends Bloc<AuthEvent, AuthState> {
+class AuthBloc extends Bloc<AuthEvent, AuthState> {
   final networkInfo = NetworkInfo();
   UserAuthRepository repo;
 
-  LoginBloc({
+  AuthBloc({
     required this.repo,
     required AuthState userState,
   }) : super(UserOffline()) {
@@ -18,16 +18,15 @@ class LoginBloc extends Bloc<AuthEvent, AuthState> {
       (event, emit) async {
         final isConnected = await networkInfo.isConnected();
         if (!isConnected) {
+          print('User Auth: No internet connection');
           emit(ConnectionError());
         } else {
           try {
-            bool response = repo.userLogIn(event.username, event.password);
-            if (response) {
-              emit(UserOnline());
-            } else {
-              emit(const UserLogError(message: 'Status code 400'));
-            }
+            var response = repo.userLogIn(event.username, event.password);
+            print('User Auth: Success');
+            emit(UserOnline());
           } catch (e) {
+            print('User Auth: Error');
             emit(UserLogError(message: e.toString()));
           }
         }

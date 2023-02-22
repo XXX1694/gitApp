@@ -26,9 +26,8 @@ class UserAuthRepository {
         // status code 200 ---- OK
         final data = json.decode(res.body);
         storage.setString(tokenKey, data['auth_token']);
-        return true;
-      } else {
-        return false;
+        print('User Auth: Token saved - ${data['auth_token']}');
+        return data;
       }
     }
   }
