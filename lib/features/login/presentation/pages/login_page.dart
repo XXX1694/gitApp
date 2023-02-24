@@ -28,6 +28,7 @@ class _LoginPageState extends State<LoginPage> {
   @override
   void initState() {
     bloc = BlocProvider.of<AuthBloc>(context);
+    // bloc.add(GetUserStatus());
     _loginController = TextEditingController();
     _passwordController = TextEditingController();
     super.initState();
@@ -36,44 +37,57 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<AuthBloc, AuthState>(
-      builder: (context, state) => Scaffold(
-        backgroundColor: backgroundColor,
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: padding_horiontal),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              const Spacer(flex: 2),
-              const TextBlock(),
-              const Spacer(flex: 2),
-              LoginField(controller: _loginController),
-              const SizedBox(height: 16),
-              PasswordField(controller: _passwordController),
-              const SizedBox(height: 12),
-              const ForgotPassword(),
-              const Spacer(flex: 3),
-              MainButton(
-                txt: AppLocalizations.of(context)!.enter,
-                onPressed: () {
-                  bloc.add(
-                    LogIn(
-                      username: _loginController.text,
-                      password: _passwordController.text,
+      builder: (context, state) => BlocBuilder<AuthBloc, AuthState>(
+        builder: (context, state) {
+          if (state is UserOffline) {
+            return Scaffold(
+              backgroundColor: backgroundColor,
+              body: Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: padding_horiontal),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    const Spacer(flex: 2),
+                    const TextBlock(),
+                    const Spacer(flex: 2),
+                    LoginField(controller: _loginController),
+                    const SizedBox(height: 16),
+                    PasswordField(controller: _passwordController),
+                    const SizedBox(height: 12),
+                    const ForgotPassword(),
+                    const Spacer(flex: 3),
+                    MainButton(
+                      txt: AppLocalizations.of(context)!.enter,
+                      onPressed: () {
+                        bloc.add(
+                          LogIn(
+                            username: _loginController.text,
+                            password: _passwordController.text,
+                          ),
+                        );
+                      },
                     ),
-                  );
-                },
+                    const SizedBox(height: 40),
+                    const SignUpTransition(),
+                    const SizedBox(height: 12),
+                  ],
+                ),
               ),
-              const SizedBox(height: 40),
-              const SignUpTransition(),
-              const SizedBox(height: 12),
-            ],
-          ),
-        ),
+            );
+          } else {
+            return const Scaffold(
+              body: Center(
+                child: CircularProgressIndicator(),
+              ),
+            );
+          }
+        },
       ),
       listener: (context, state) {
         if (state is UserOnline) {
-          Navigator.pushNamedAndRemoveUntil(context, '/', (route) => false);
+          Navigator.pushNamedAndRemoveUntil(context, '/main', (route) => false);
         } else if (state is UserLogError) {
           showCustomBottomSheet(
             context,

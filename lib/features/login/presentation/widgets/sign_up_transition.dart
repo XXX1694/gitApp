@@ -14,15 +14,20 @@ class SignUpTransition extends StatelessWidget {
       children: [
         Text(
           AppLocalizations.of(context)!.have_an_account,
-          style: Theme.of(context).textTheme.subtitle2,
+          style: Theme.of(context).textTheme.titleSmall,
         ),
         const Text(' '),
-        Text(
-          AppLocalizations.of(context)!.sign_up,
-          style: Theme.of(context).textTheme.subtitle2!.copyWith(
-                color: kPrimaryColor,
-                fontWeight: FontWeight.w500,
-              ),
+        GestureDetector(
+          onTap: () {
+            Navigator.of(context).pushNamed('/registration/first');
+          },
+          child: Text(
+            AppLocalizations.of(context)!.sign_up,
+            style: Theme.of(context).textTheme.titleSmall!.copyWith(
+                  color: kPrimaryColor,
+                  fontWeight: FontWeight.w500,
+                ),
+          ),
         ),
       ],
     );

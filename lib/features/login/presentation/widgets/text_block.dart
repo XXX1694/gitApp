@@ -16,13 +16,13 @@ class TextBlock extends StatelessWidget {
             children: [
               TextSpan(
                 text: AppLocalizations.of(context)!.app_name_1,
-                style: Theme.of(context).textTheme.headline1,
+                style: Theme.of(context).textTheme.displayLarge,
               ),
               TextSpan(
                 text: AppLocalizations.of(context)!.app_name_2,
                 style: Theme.of(context)
                     .textTheme
-                    .headline1!
+                    .displayLarge!
                     .copyWith(color: kPrimaryColor),
               ),
             ],
@@ -30,7 +30,7 @@ class TextBlock extends StatelessWidget {
         ),
         Text(
           AppLocalizations.of(context)!.log_in_to_continue,
-          style: Theme.of(context).textTheme.subtitle1,
+          style: Theme.of(context).textTheme.titleMedium,
         ),
       ],
     );

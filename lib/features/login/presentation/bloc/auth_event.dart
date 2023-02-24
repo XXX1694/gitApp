@@ -7,6 +7,8 @@ class AuthEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class GetUserStatus extends AuthEvent {}
+
 class LogIn extends AuthEvent {
   final String username;
   final String password;

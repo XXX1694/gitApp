@@ -6,7 +6,20 @@
     "login": "Логин",
     "password": "Пароль",
     "forgot_password": "Забыли пароль?",
-    "enter": "Зайти",
+    "enter": "Вход",
     "have_an_account": "Еще нету аккаутна?",
-    "sign_up": "Регестрация"
+    "sign_up": "Регестрация",
+
+    "create_acc": "Создать аккаунт",
+    "back": "Назад",
+    "repeat_password": "Повторите пароль",
+    "create": "Создать",
+
+    "first_name": "Имя",
+    "last_name": "Фамилия",
+    "birth_date": "Дата рождение",
+    "sex": "Пол",
+    "phone_number": "Номер",
+    "email": "Почта",
+    "continue_text": "Продолжить"
 }
