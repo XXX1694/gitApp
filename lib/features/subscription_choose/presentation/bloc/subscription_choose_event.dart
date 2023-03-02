@@ -6,3 +6,10 @@ abstract class SubscriptionChooseEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class GetSubscription extends SubscriptionChooseEvent {}
+
+class SetSubscribtion extends SubscriptionChooseEvent {
+  final int subscriptionID;
+  const SetSubscribtion({required this.subscriptionID});
+}

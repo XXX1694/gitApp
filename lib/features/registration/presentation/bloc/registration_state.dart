@@ -19,3 +19,12 @@ class UserCreateError extends RegistrationState {
   final String message;
   const UserCreateError({required this.message});
 }
+
+class ProfileCreating extends RegistrationState {}
+
+class ProfileCreated extends RegistrationState {}
+
+class ProfileCreateError extends RegistrationState {
+  final String message;
+  const ProfileCreateError({required this.message});
+}

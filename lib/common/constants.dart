@@ -7,3 +7,5 @@ const double default_border_radius = 8.0;
 
 const String tokenKey = 'TOKEN';
 const String idKey = 'USERID';
+const String clubKey = 'CLUBID';
+const String clientKey = 'CLIENTID';

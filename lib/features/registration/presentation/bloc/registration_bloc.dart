@@ -15,29 +15,69 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
     required this.repo,
     required RegistrationState registrationState,
   }) : super(RegistrationInitial()) {
-    on<CreateUser>((event, emit) async {
-      emit(UserCreating());
-      final isConnected = await networkInfo.isConnected();
-      if (!isConnected) {
-        if (kDebugMode) {
-          print('User create: No internet connection');
-        }
-        emit(ConnectionError());
-      } else {
-        try {
-          await repo.createUser(event.username, event.password);
-          // var success = await repo.gerUserID();
+    on<CreateUser>(
+      (event, emit) async {
+        emit(UserCreating());
+        final isConnected = await networkInfo.isConnected();
+        if (!isConnected) {
           if (kDebugMode) {
-            print('User create: Success');
+            print('User create: No internet connection');
           }
-          emit(UserCreated());
-        } catch (e) {
-          if (kDebugMode) {
-            print('User create: Error');
+          emit(ConnectionError());
+        } else {
+          try {
+            await repo.createUser(event.username, event.password);
+            // var success = await repo.gerUserID();
+            if (kDebugMode) {
+              print('User create: Success');
+            }
+            emit(UserCreated());
+          } catch (e) {
+            if (kDebugMode) {
+              print('User create: Error');
+            }
+            emit(UserCreateError(message: e.toString()));
           }
-          emit(UserCreateError(message: e.toString()));
         }
-      }
-    });
+      },
+    );
+    on<CreateProfile>(
+      (event, emit) async {
+        emit(ProfileCreating());
+        final isConnected = await networkInfo.isConnected();
+        if (!isConnected) {
+          if (kDebugMode) {
+            print('User create: No internet connection');
+          }
+          emit(ConnectionError());
+        } else {
+          try {
+            final res = await repo.editProfile(
+              event.firstName,
+              event.lastName,
+              event.birthDate,
+              event.sex,
+              event.phoneNumber,
+              event.email,
+            );
+            print('Profile edit response:');
+            print(res);
+            if (kDebugMode) {
+              print('Profile create: Success');
+            }
+            await repo.clientCreate();
+            if (kDebugMode) {
+              print('Client create: Success');
+            }
+            emit(ProfileCreated());
+          } catch (e) {
+            if (kDebugMode) {
+              print('Profile create: Error');
+            }
+            emit(ProfileCreateError(message: e.toString()));
+          }
+        }
+      },
+    );
   }
 }

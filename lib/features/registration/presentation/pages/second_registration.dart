@@ -8,6 +8,7 @@ import 'package:fit_app/features/registration/presentation/widgets/first_name_fi
 import 'package:fit_app/features/registration/presentation/widgets/last_name_field.dart';
 import 'package:fit_app/features/registration/presentation/widgets/phone_number_field.dart';
 import 'package:fit_app/features/registration/presentation/widgets/sex_field.dart';
+import 'package:fit_app/utils/snack_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -30,6 +31,7 @@ late RegistrationBloc bloc;
 class _SecondRegistrationPageState extends State<SecondRegistrationPage> {
   @override
   void initState() {
+    bloc = BlocProvider.of<RegistrationBloc>(context);
     _firstNameController = TextEditingController();
     _lastNameController = TextEditingController();
     _birthDateController = TextEditingController();
@@ -43,6 +45,7 @@ class _SecondRegistrationPageState extends State<SecondRegistrationPage> {
   Widget build(BuildContext context) {
     return BlocConsumer<RegistrationBloc, RegistrationState>(
       builder: (context, state) => Scaffold(
+        resizeToAvoidBottomInset: false,
         body: Column(
           children: [
             CustomAppBar(title: AppLocalizations.of(context)!.create_acc),
@@ -67,7 +70,18 @@ class _SecondRegistrationPageState extends State<SecondRegistrationPage> {
                     const Spacer(),
                     MainButton(
                       txt: AppLocalizations.of(context)!.create,
-                      onPressed: () {},
+                      onPressed: () {
+                        bloc.add(
+                          CreateProfile(
+                            firstName: _firstNameController.text,
+                            lastName: _lastNameController.text,
+                            birthDate: _birthDateController.text,
+                            sex: _sexController.text,
+                            phoneNumber: _phoneNumberController.text,
+                            email: _emailController.text,
+                          ),
+                        );
+                      },
                     ),
                     const SizedBox(height: 40),
                   ],
@@ -77,7 +91,18 @@ class _SecondRegistrationPageState extends State<SecondRegistrationPage> {
           ],
         ),
       ),
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is ProfileCreated) {
+          Navigator.of(context).pushNamed('/registration/choose');
+        } else if (state is ProfileCreateError) {
+          showCustomSnackBar(
+            context,
+            Text(state.message),
+          );
+        } else if (state is ConnectionError) {
+          showCustomSnackBar(context, const Text('No internet connection'));
+        } else {}
+      },
     );
   }
 

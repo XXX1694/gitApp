@@ -21,5 +21,13 @@
     "sex": "Пол",
     "phone_number": "Номер",
     "email": "Почта",
-    "continue_text": "Продолжить"
+    "continue_text": "Продолжить",
+
+    "choose": "Выбрать",
+    "centers": "Центры",
+    "coaches": "Треннеры",
+    "almaty": "Алматы",
+
+    "select_contract": "Выбрать контракт",
+    "skip": "Проп."
 }

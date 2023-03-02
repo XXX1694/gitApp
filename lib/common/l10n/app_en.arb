@@ -21,5 +21,13 @@
     "sex": "Sex",
     "phone_number": "Phone number",
     "email": "Email",
-    "continue_text": "Continue"
+    "continue_text": "Continue",
+
+    "choose": "Choose",
+    "centers": "Centers",
+    "coaches": "Coaches",
+    "almaty": "Almaty",
+
+    "select_contract": "Select Contract",
+    "skip": "Skip"
 }
