@@ -104,7 +104,6 @@ class RegistrationRepository {
 
   clientCreate() async {
     final storage = await _storage;
-    final id = storage.getInt(idKey);
     final token = storage.get(tokenKey);
 
     // creating url

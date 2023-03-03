@@ -41,6 +41,7 @@ class _LoginPageState extends State<LoginPage> {
         builder: (context, state) {
           if (state is UserOffline) {
             return Scaffold(
+              resizeToAvoidBottomInset: false,
               backgroundColor: backgroundColor,
               body: Padding(
                 padding:

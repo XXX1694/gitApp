@@ -2,6 +2,9 @@ import 'package:fit_app/common/theme/light_theme.dart';
 import 'package:fit_app/features/choose/choose.dart';
 import 'package:fit_app/features/choose/club_choose/data/repositories/club_repository.dart';
 import 'package:fit_app/features/choose/club_choose/presentation/bloc/club_choose_bloc.dart';
+import 'package:fit_app/features/contract_start/presentation/pages/contract_start_page.dart';
+import 'package:fit_app/features/contract_start/presentation/widgets/agreement_page.dart';
+import 'package:fit_app/features/contract_start/presentation/widgets/rules_page.dart';
 import 'package:fit_app/features/default_pages/not_working.dart';
 import 'package:fit_app/features/login/data/repositories/user_auth_repository.dart';
 import 'package:fit_app/features/login/presentation/bloc/auth_bloc.dart';
@@ -76,8 +79,11 @@ class MyApp extends StatelessWidget {
           '/registration/choose': (context) => const ChoosePage(),
           '/registration/subscription': (context) =>
               const SubscriptionChoosePage(),
+          '/registration/contract': (context) => const ContractStartPage(),
+          '/rules': (context) => const RulesPage(),
+          '/agreement': (context) => const AgreementPage(),
         },
-        initialRoute: '/',
+        initialRoute: '/registration/contract',
       ),
     );
   }

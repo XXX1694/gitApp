@@ -29,5 +29,12 @@
     "almaty": "Almaty",
 
     "select_contract": "Select Contract",
-    "skip": "Skip"
+    "skip": "Skip",
+
+    "contract_start": "Contract start",
+    "i_confirm": "I confirm that I have read and accept the",
+    "rules": "rules of visiting the club.",
+    "i_agree": "I agree to the collection and processing of my personal data in accordance with the",
+    "agreement": "client agreement.",
+    "confirm": "Confirm"
 }

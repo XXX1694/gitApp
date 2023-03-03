@@ -52,7 +52,7 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
           emit(ConnectionError());
         } else {
           try {
-            final res = await repo.editProfile(
+            await repo.editProfile(
               event.firstName,
               event.lastName,
               event.birthDate,
@@ -60,8 +60,6 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
               event.phoneNumber,
               event.email,
             );
-            print('Profile edit response:');
-            print(res);
             if (kDebugMode) {
               print('Profile create: Success');
             }
